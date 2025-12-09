@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+  namespace: nginx-ns
+spec:
+  selector:
+    app: nginx
+  # 'ports' must be at the same level as 'selector'
+  ports:
+    - protocol: TCP
+      port: 80        # The port on the Service (outside world)
+      targetPort: 80  # The port on the Pod (inside container)
+  
+  # 'type' must be at the same level as 'selector' and 'ports'
+  type: ClusterIP

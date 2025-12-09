@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-app-deployment
+  namespace: nginx-ns
+  labels:
+    app: notes-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: notes-app
+  template:
+    metadata:
+      labels:
+        app: notes-app
+    spec:
+      containers:
+        - name: notes-app
+          image: syedbilal47/notes-app-k8s
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000

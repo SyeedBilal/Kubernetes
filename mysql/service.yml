@@ -1,0 +1,16 @@
+# WE DONT WANT TO EXPOSE THIS SERVICE TO OUTSIDE WORLD , WE WANT IT TO BIND WITH PARTICULAR STATEFUL SET
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: mysql-ns
+spec:
+  clusterIP: None
+  selector:
+    app: mysql
+  ports:
+    - name: mysql
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
+

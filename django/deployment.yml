@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: notes-app-deployment
-  namespace: nginx-ns
+  namespace: notes-app-ns
   labels:
     app: notes-app
 spec:
